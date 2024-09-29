@@ -1,0 +1,135 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+section {
+    padding: 10px; 
+}
+
+.dish-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 10px; /* Отступ между элементами сетки */
+}
+
+.dish {
+    display: flex; /* Flexbox для выравнивания элементов */
+    flex-direction: column; /* Вертикальное направление */
+
+    padding: 30px 40px;
+    border-radius: 35px; /* Радиус закругления */
+    cursor: pointer; /* Вид курсора */
+    filter: drop-shadow(17px 19px 24px rgba(0, 0, 0, 0.13)); 
+    background-color: white; 
+     
+    justify-content: space-between; /* Расположение элементов */
+    transition: border 0.3s, background-color 0.3s; /* Переход для границы и цвета фона кнопки */
+}
+
+.dish:hover {
+    border: 2px solid tomato; 
+}
+
+.dish img {
+    width: 100%; 
+    border-radius: 35px; 
+}
+
+.dish-content p.price {
+    font-size: 1.1em; /* Увеличиваем размер шрифта для цены */    
+}
+
+.dish-content p.name {
+    font-size: 1.1em; /* Увеличиваем размер шрифта для цены */    
+}
+
+.dish-content p.weight {
+    color: gray; /* Меняем цвет текста на серый для веса/объема */
+}
+
+button {
+    background-color: #f1eee9; 
+    margin-top: 10px; 
+    padding: 10px 30px; /* Внутренние отступы: 10px сверху и снизу, 30px справа и слева */
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;  
+    width: 100%;
+}
+
+
+.dish:hover button {
+    background-color: darkgrey; 
+}
+
+body {
+    font-family: 'Roboto', sans-serif; 
+    font-size: 20px; 
+    color:#333;
+    
+}
+
+main, nav {
+    margin: 20px; /* отступы вокруг блоков */
+    padding: 40px; /* внутренние отступы для блоков */
+    box-shadow: 0 2px 7px rgb(224, 221, 221); 
+}
+
+header {
+    margin: 20px; 
+    padding: 20px; 
+    box-shadow: 0 2px 7px rgb(224, 221, 221); 
+}
+
+h1, h2, h3 {
+    color: #000000; 
+}
+
+img {
+    width: 60%; 
+    height: auto; 
+}
+
+
+nav a {
+    color: #333;
+    text-decoration: none; 
+    margin: 0 15px;
+}
+
+nav a:hover {
+    color: #ff2600; 
+}
+
+.navigation {
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+.navigation a {
+    
+    text-decoration: none;
+
+}
+
+.navigation a.active {
+    color: #ff2600;
+}
+
+
+footer {
+    color: white;
+    background-color:  black;  
+    padding: 30px; 
+    text-align: center;
+    margin-top: 30px; 
+    
+
+    
+}
+
+
