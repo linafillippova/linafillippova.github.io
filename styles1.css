@@ -1,0 +1,85 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif; 
+    font-size: 20px; 
+    color:#333;
+} 
+
+main, nav, div {
+    margin: 20px; /* отступы вокруг блоков */
+    padding: 40px; /* внутренние отступы для блоков */
+    box-shadow: 0 2px 7px rgb(224, 221, 221); 
+}
+
+header {
+    margin: 20px; 
+    padding: 20px; 
+    box-shadow: 0 2px 7px rgb(224, 221, 221); 
+}
+
+h1, h2, h3 {
+    color: #000000; 
+}
+
+img {
+    width: 600px;
+    height: 400px; 
+}
+
+table {
+    text-align: center;
+    width: 85%; 
+    border-collapse: collapse; /* убирает двойные границы */
+}
+
+table, th, td {
+    border: 1px solid #000000; 
+    padding: 10px; 
+    text-align: center;  
+}
+
+th {
+    background-color: #414040; 
+    color: white; 
+}
+
+.navigation {
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+.navigation a {
+    
+    text-decoration: none;
+
+}
+
+.navigation a.active {
+    color: #ff2600;
+}
+nav a {
+    color: #333;
+    text-decoration: none; 
+    margin: 0 15px;
+}
+
+nav a:hover {
+    color: #ff2600; 
+}
+
+footer {
+    color: white;
+    background-color:  black;  
+    padding: 30px; 
+    text-align: center;
+    margin-top: 30px; 
+}
+
+
