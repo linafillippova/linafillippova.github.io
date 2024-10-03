@@ -23,10 +23,7 @@ section {
     border-radius: 35px; /* Радиус закругления */
     cursor: pointer; /* Вид курсора */
     filter: drop-shadow(17px 19px 24px rgba(0, 0, 0, 0.13)); 
-    background-color: white; 
-     
-    justify-content: space-between; /* Расположение элементов */
-    transition: border 0.3s, background-color 0.3s; /* Переход для границы и цвета фона кнопки */
+    background-color: white;     
 }
 
 .dish:hover {
@@ -69,7 +66,6 @@ body {
     font-family: 'Roboto', sans-serif; 
     font-size: 20px; 
     color:#333;
-    
 }
 
 main, nav {
@@ -94,11 +90,6 @@ img {
 }
 
 
-nav a {
-    color: #333;
-    text-decoration: none; 
-    margin: 0 15px;
-}
 
 nav a:hover {
     color: #ff2600; 
@@ -107,12 +98,14 @@ nav a:hover {
 .navigation {
     display: flex;
     flex-wrap: wrap;
-    
+    gap: 15px;
 }
 
 .navigation a {
-    
     text-decoration: none;
+    color: #333;
+    text-decoration: none; 
+    margin: 0 15px;
 
 }
 
@@ -130,6 +123,22 @@ footer {
     
 
     
+}
+
+@media (max-width: 800px) {
+    .dish-grid {
+        grid-template-columns: repeat(3, 1fr); 
+    }
+}
+
+@media (max-width: 600px) {
+    section > h2 {
+        text-align: center; 
+    }
+
+    .dish-grid {
+        grid-template-columns: 3fr; /* Колонок: 1 */
+    }
 }
 
 
