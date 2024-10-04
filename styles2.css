@@ -36,15 +36,15 @@ section {
 }
 
 .dish-content p.price {
-    font-size: 1.1em; /* Увеличиваем размер шрифта для цены */    
+    font-size: 1.1em;   
 }
 
 .dish-content p.name {
-    font-size: 1.1em; /* Увеличиваем размер шрифта для цены */    
+    font-size: 1.1em; 
 }
 
 .dish-content p.weight {
-    color: gray; /* Меняем цвет текста на серый для веса/объема */
+    color: gray; 
 }
 
 button {
@@ -89,8 +89,6 @@ img {
     height: auto; 
 }
 
-
-
 nav a:hover {
     color: #ff2600; 
 }
@@ -120,25 +118,26 @@ footer {
     padding: 30px; 
     text-align: center;
     margin-top: 30px; 
-    
-
-    
 }
 
-@media (max-width: 800px) {
+@media (min-width: 600px) and (max-width: 799px) {
     .dish-grid {
-        grid-template-columns: repeat(3, 1fr); 
+        grid-template-columns: 1fr; 
     }
 }
 
-@media (max-width: 600px) {
+@media (min-width: 400px) and (max-width: 599px) {
     section > h2 {
         text-align: center; 
     }
-
     .dish-grid {
-        grid-template-columns: 3fr; /* Колонок: 1 */
-    }
+        grid-template-columns: repeat(1,1fr); 
+}    
+
 }
 
-
+@media (max-width: 399px) {
+    .dish-grid {
+        grid-template-columns: repeat(1,1fr); 
+    }
+}
