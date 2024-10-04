@@ -78,13 +78,13 @@ footer {
     margin-top: 30px; 
 }
 
-@media (max-width: 800px) {
+@media (min-width: 600px) and (max-width: 799px) {
     img {
       width: 500px;
     }
   }
   
-@media (max-width: 600px) {
+@media (min-width: 400px) and (max-width: 599px) {
     h1 {
       text-align: center;
     }
@@ -100,13 +100,13 @@ footer {
       width: 100%;
     }
     table {
-      font-size: calc(100% - 2px); 
+      font-size: 14px; 
     }
 }
   
-@media (max-width: 400px) {
+@media (max-width: 399px) {
     table {
-      font-size: calc(100% - 4px); 
+      font-size: 12px; 
     }
 }
   
