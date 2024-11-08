@@ -9,13 +9,13 @@ section {
     padding: 10px; 
 }
 
-.dish-grid {
+.meals-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr); 
     gap: 10px; /* Отступ между элементами сетки */
 }
 
-.dish {
+.meal-item {
     display: flex; /* Flexbox для выравнивания элементов */
     flex-direction: column; /* Вертикальное направление */
 
@@ -26,25 +26,19 @@ section {
     background-color: white;     
 }
 
-.dish:hover {
+.meal-item:hover {
     border: 2px solid tomato; 
 }
 
-.dish img {
+.meal-item img {
     width: 100%; 
     border-radius: 35px; 
 }
 
-.dish-content p.price {
-    font-size: 1.1em;   
-}
 
-.dish-content p.name {
-    font-size: 1.1em; 
-}
-
-.dish-content p.weight {
+.meal-count{
     color: gray; 
+    font-size: 0.9em;
 }
 
 button {
@@ -53,14 +47,10 @@ button {
     padding: 10px 30px; /* Внутренние отступы: 10px сверху и снизу, 30px справа и слева */
     border-radius: 10px;
     cursor: pointer;
-    border: none;  
+    border: none;   
     width: 100%;
 }
 
-
-.dish:hover button {
-    background-color: darkgrey; 
-}
 
 body {
     font-family: 'Roboto', sans-serif; 
@@ -215,3 +205,14 @@ button[type="reset"]:hover {
     }
 }
 
+
+
+.dish-card {
+    border: 1px solid #ccc;
+    padding: 16px;
+    margin: 10px;
+    text-align: center;
+    border-radius: 8px;
+    width: 200px;
+    display: inline-block;
+}
