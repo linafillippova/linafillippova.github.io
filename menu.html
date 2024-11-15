@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="styles2.css"> 
     <script src="print-dishes.js"></script>
     <script src="dishes.js"></script>
+    <script src="filters.js"></script>
 </head>
 
 <body>
@@ -28,18 +29,62 @@
 <main>
     <section>
         <h2> Супы </h2>
+        
+        <div class="filters">
+            <button data-kind="fish">Рыбный</button>
+            <button data-kind="meat">Мясной</button>
+            <button data-kind="veg">Вегетарианский</button>
+        </div>
+
         <div class="meals-grid" id="soup-grid"></div>
     </section>
     
     <section>
         <h2> Главное блюдо </h2>
+
+        <div class="filters">
+            <button data-kind="fish">Рыбный</button>
+            <button data-kind="meat">Мясной</button>
+            <button data-kind="veg">Вегетарианский</button>
+        </div>
+
         <div class="meals-grid" id="main-grid"></div>
     </section>
 
     <section>
+        <h2> Салат или стартер </h2>
+
+        <div class="filters">
+            <button data-kind="fish">Рыбный</button>
+            <button data-kind="meat">Мясной</button>
+            <button data-kind="veg">Вегетарианский</button>
+        </div>
+
+        <div class="meals-grid" id="salads_starters-grid"></div>
+    </section>
+
+    <section>
         <h2> Напитки </h2>
+
+        <div class="filters">
+            <button data-kind="cold">Холодный</button>
+            <button data-kind="hot">Горячий</button>
+        </div>
+
         <div class="meals-grid" id="drink-grid"></div>
     </section>  
+
+    <section>
+        <h2> Десерты </h2>
+
+        <div class="filters">
+            <button data-kind="small">Маленькая порция</button>
+            <button data-kind="middle">Средняя порция</button>
+            <button data-kind="large">Большая порция</button>
+        </div>
+
+        <div class="meals-grid" id="desserts-grid"></div>
+    </section>
 
 
     <section class="forma">
