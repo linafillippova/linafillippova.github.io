@@ -1,7 +1,9 @@
 let order = {
     soup: null,
     main: null,
-    drink: null
+    drink: null,
+    salads_starters: null,
+    desserts: null
 };
   
   function addToOrder(meal) {
@@ -29,9 +31,13 @@ let order = {
             isOrderEmpty = false; 
         } else {
             const mealInfo = document.createElement("p");
-            mealInfo.textContent = category === "soup" || category === "main" ? 
-              "Блюдо не выбрано" : 
-              "Напиток не выбран";
+            mealInfo.textContent = 
+            category === "soup" ? "Суп не выбран" :
+            category === "main" ? "Главное блюдо не выбрано" :
+            category === "drink" ? "Напиток не выбран" :
+            category === "salads_starters" ? "Салаты и стартеры не выбраны" :
+            category === "desserts" ? "Десерт не выбран": "-------";
+              
             orderSummary.appendChild(mealInfo);
         }
     }
@@ -56,6 +62,10 @@ function getCategoryTitle(category) {
         return "Главное блюдо";
       case "drink":
         return "Напиток";
+      case "salads_starters":
+        return "Салаты и стартеры";
+      case "desserts":
+        return "Десерт";
       default:
         return "";
     }
@@ -65,7 +75,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const categories = {
       soup: document.getElementById("soup-grid"),
       main: document.getElementById("main-grid"),
+      salads_starters: document.getElementById("salads_starters-grid"),
       drink: document.getElementById("drink-grid"),
+      desserts: document.getElementById("desserts-grid")
     };
   
     function displayMeals(category, filter = null) {
@@ -95,7 +107,32 @@ document.addEventListener("DOMContentLoaded", function () {
         categories[category].appendChild(mealElement);
       });
     }
+
+
+    document.querySelectorAll(".filters button").forEach((button) => {
+      button.addEventListener("click", function () {
+        const categorySection = this.closest("section")
+          .querySelector(".meals-grid")
+          .id.split("-")[0];
+        const kind = this.getAttribute("data-kind");
   
+        this.classList.toggle("active");
+  
+        if (this.classList.contains("active")) {
+  
+          this.closest(".filters")
+            .querySelectorAll("button")
+            .forEach((btn) => {
+              if (btn !== this) btn.classList.remove("active");
+            });
+  
+          displayMeals(categorySection, kind);
+        } else {
+          displayMeals(categorySection);
+        }
+      });
+    });
+    
     Object.keys(categories).forEach((category) => displayMeals(category));
-  
+    
   });
