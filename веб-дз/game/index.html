@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styleGame.css">
+    <script src="game.js" defer></script>
+    <title>Math Game</title>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">Math Game</h1>
+        </header>
+
+        <main class="game-area">
+            <div class="game-info">
+                <div class="info-item">
+                    <p class="info-label">Level:</p>
+                    <p id="level" class="info-value">1</p>
+                </div>
+                <div class="info-item">
+                    <p class="info-label">Time Left:</p>
+                    <p id="countdown" class="info-value">60</p>
+                </div>
+            </div>
+
+            <div class="math-problem">
+                <p id="math" class="math-question">2 + 2 = ?</p>
+            </div>
+
+            <div class="answer-form">
+                <input 
+                    type="text" 
+                    name="input_result" 
+                    id="input_result" 
+                    class="answer-input" 
+                    required 
+                    placeholder="Enter your answer">
+                <button type="submit" id="checkresult" class="submit-button">Submit</button>
+            </div>
+
+            <div class="results">
+                <p id="result" class="result-message"></p>
+                <p id="quanlitycorrect" class="result-correct"></p>
+                <p id="quanlitytotal" class="result-total"></p>
+            </div>
+        </main>
+
+        <div id="modal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <h2 id="modal-message" class="modal-message"></h2>
+                <div class="modal-buttons">
+                    <button id="play-again" class="modal-button">Reset</button>
+                    <button id="exit" class="modal-button">Exit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
