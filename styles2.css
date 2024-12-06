@@ -204,6 +204,10 @@ button[type="submit"]:hover {
     background-color: #218838; 
 }
 
+button[type="reset"]{
+    border: none;
+}
+
 button[type="reset"]:hover {
     background-color: #fb7b7b; 
 }
