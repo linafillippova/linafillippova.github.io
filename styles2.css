@@ -164,7 +164,7 @@ legend {
 }
 
 /* Стили для блоков заказа и данных клиента */
-.order, .customer {
+.order, .customer-section {
     flex: 1; /* Каждый блок занимает равное пространство */
     margin: 0 10px; 
     min-width: 300px; 
@@ -236,4 +236,45 @@ button[type="reset"]:hover {
     border-radius: 8px;
     width: 200px;
     display: inline-block;
+}
+
+
+
+.lunch-combo {
+    text-align: center;
+}
+
+.combo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.combo-item {
+    border-radius: 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 1rem 0.5rem;
+    border: 2px solid #0c0c0c;
+}
+
+.combo-item:hover {
+    border-color:#218838;
+}
+
+.combo-item img {
+    width: 4rem;
+    transition: transform 0.3s;
+}
+
+.combo-item img:hover {
+    transform: translateY(-10px) scale(1.1);
+}
+
+.dessert-note {
+    font-size: 0.9em;
 }
