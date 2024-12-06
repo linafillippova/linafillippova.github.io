@@ -1,17 +1,19 @@
+import { meals, loadDishes } from "./meals.js";
+
 let order = {
     soup: null,
-    main: null,
+    main_course: null,
     drink: null,
-    salads_starters: null,
-    desserts: null
+    salad: null,
+    dessert: null
 };
   
-  function addToOrder(meal) {
-    order[meal.category] = meal;
-    updateOrderDisplay();
+function addToOrder(meal) {
+  order[meal.category] = meal;
+  updateOrderDisplay();
 }
   
-  function updateOrderDisplay() {
+function updateOrderDisplay() {
     const orderSummary = document.getElementById("order-summary");
     orderSummary.innerHTML = "";
   
@@ -33,10 +35,10 @@ let order = {
             const mealInfo = document.createElement("p");
             mealInfo.textContent = 
             category === "soup" ? "Суп не выбран" :
-            category === "main" ? "Главное блюдо не выбрано" :
+            category === "main_course" ? "Главное блюдо не выбрано" :
             category === "drink" ? "Напиток не выбран" :
-            category === "salads_starters" ? "Салаты и стартеры не выбраны" :
-            category === "desserts" ? "Десерт не выбран": "-------";
+            category === "salad" ? "Салаты и стартеры не выбраны" :
+            category === "dessert" ? "Десерт не выбран": "-------";
               
             orderSummary.appendChild(mealInfo);
         }
@@ -54,32 +56,36 @@ let order = {
       orderSummary.appendChild(totalCostElement);
     }
 }
+
 function getCategoryTitle(category) {
     switch (category) {
       case "soup":
         return "Суп";
-      case "main":
+      case "main_course":
         return "Главное блюдо";
       case "drink":
         return "Напиток";
-      case "salads_starters":
+      case "salad":
         return "Салаты и стартеры";
-      case "desserts":
+      case "dessert":
         return "Десерт";
       default:
         return "";
     }
 }
   
-document.addEventListener("DOMContentLoaded", function () {
-    const categories = {
-      soup: document.getElementById("soup-grid"),
-      main: document.getElementById("main-grid"),
-      salads_starters: document.getElementById("salads_starters-grid"),
-      drink: document.getElementById("drink-grid"),
-      desserts: document.getElementById("desserts-grid")
-    };
-  
+document.addEventListener("DOMContentLoaded", async function () {
+
+  await loadDishes();
+
+  const categories = {
+    soup: document.getElementById("soup-grid"),
+    main_course: document.getElementById("main_course-grid"),
+    salad: document.getElementById("salad-grid"),
+    drink: document.getElementById("drink-grid"),
+    dessert: document.getElementById("dessert-grid"),
+  };
+
     function displayMeals(category, filter = null) {
       categories[category].innerHTML = "";
   
@@ -106,10 +112,11 @@ document.addEventListener("DOMContentLoaded", function () {
           .addEventListener("click", () => addToOrder(meal));
         categories[category].appendChild(mealElement);
       });
-    }
+  }
 
+  Object.keys(categories).forEach((category) => displayMeals(category));
 
-    document.querySelectorAll(".filters button").forEach((button) => {
+  document.querySelectorAll(".filters button").forEach((button) => {
       button.addEventListener("click", function () {
         const categorySection = this.closest("section")
           .querySelector(".meals-grid")
@@ -131,8 +138,19 @@ document.addEventListener("DOMContentLoaded", function () {
           displayMeals(categorySection);
         }
       });
-    });
-    
-    Object.keys(categories).forEach((category) => displayMeals(category));
-    
   });
+    
+  document.querySelector("form").addEventListener("reset", function () {
+    order = {
+      soup: null,
+      main_course: null,
+      drink: null,
+      salad: null,
+      dessert: null,
+    };
+
+    updateOrderDisplay();
+  });
+});
+
+//export { order };
