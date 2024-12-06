@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food Construct</title>
     <link rel="stylesheet" href="styles2.css"> 
-    <script src="print-dishes.js"></script>
-    <script src="dishes.js"></script>
-    <script src="filters.js"></script>
+    <script type="module" src="print-dishes.js"></script>
+    <script type="module" src="meals.js"></script>
+    <script src="notifications.js"></script>
 </head>
 
 <body>
@@ -27,6 +27,98 @@
 </header>
 
 <main>
+    <section class="lunch-combo">
+        <h2> Доступные для заказа комбо </h2>
+
+        <div class="combo-grid">
+
+            <div class="combo-item">
+                <div class="dish">
+                    <img src="icons/soup.png" alt="Суп" class="dish-img">
+                    <p>Суп</p>
+                </div>
+                <div class="dish">
+                    <img src="icons/main.png" alt="Главное блюдо" class="dish-img">
+                    <p>Главное блюдо</p>
+                </div>
+                <div class="dish">
+                    <img src="icons/salad.png" alt="Салат" class="dish-img">
+                    <p>Салат</p>
+                </div>
+                <div class="dish">
+                    <img src="icons/drink.png" alt="Напиток" class="dish-img">
+                    <p>Напиток</p>
+                </div>
+            </div>
+
+            <div class="combo-item">
+                <div class="dish">
+                    <img src="icons/soup.png" alt="Суп" class="dish-img">
+                    <p>Суп</p>
+                </div>
+                <div class="dish">
+                    <img src="icons/main.png" alt="Главное блюдо" class="dish-img">
+                    <p>Главное блюдо</p>
+                </div>
+                <div class="dish">
+                    <img src="icons/drink.png" alt="Напиток" class="dish-img">
+                    <p>Напиток</p>
+                </div>
+            </div>
+
+            <div class="combo-item">
+                <div class="dish">
+                    <img src="icons/soup.png" alt="Суп" class="dish-img">
+                    <p>Суп</p>
+                </div>
+                <div class="dish">
+                    <img src="icons/salad.png" alt="Салат" class="dish-img">
+                    <p>Салат</p>
+                </div>
+                <div class="dish">
+                    <img src="icons/drink.png" alt="Напиток" class="dish-img">
+                    <p>Напиток</p>
+                </div>
+            </div>
+
+            <div class="combo-item">
+                <div class="dish">
+                    <img src="icons/main.png" alt="Главное блюдо" class="dish-img">
+                    <p>Главное блюдо</p>
+                </div>
+                <div class="dish">
+                    <img src="icons/salad.png" alt="Салат" class="dish-img">
+                    <p>Салат</p>
+                </div>
+                <div class="dish">
+                    <img src="icons/drink.png" alt="Напиток" class="dish-img">
+                    <p>Напиток</p>
+                </div>
+            </div>
+
+            <div class="combo-item">
+                <div class="dish">
+                    <img src="icons/main.png" alt="Главное блюдо" class="dish-img">
+                    <p>Главное блюдо</p>
+                </div>
+                <div class="dish">
+                    <img src="icons/drink.png" alt="Напиток" class="dish-img">
+                    <p>Напиток</p>
+                </div>
+            </div>
+            
+            <div class="combo-item dessert-item">
+                <div class="dish">
+                    <img src="icons/desert.png" alt="Десерт" class="dish-img">
+                    <p>Десерт</p>
+                    <i class="dessert-note">(можно добавить к любому заказу)</i>
+                </div>
+            </div>
+        </div>        
+
+    </section>
+
+
     <section>
         <h2> Супы </h2>
         
@@ -48,7 +140,7 @@
             <button data-kind="veg">Вегетарианский</button>
         </div>
 
-        <div class="meals-grid" id="main-grid"></div>
+        <div class="meals-grid" id="main_course-grid"></div>
     </section>
 
     <section>
@@ -60,7 +152,7 @@
             <button data-kind="veg">Вегетарианский</button>
         </div>
 
-        <div class="meals-grid" id="salads_starters-grid"></div>
+        <div class="meals-grid" id="salad-grid"></div>
     </section>
 
     <section>
@@ -83,7 +175,7 @@
             <button data-kind="large">Большая порция</button>
         </div>
 
-        <div class="meals-grid" id="desserts-grid"></div>
+        <div class="meals-grid" id="dessert-grid"></div>
     </section>
 
 
@@ -110,7 +202,7 @@
                 </fieldset>
 
                 <!-- Блок с данными клиента -->
-                <fieldset class="customer">
+                <fieldset class="customer-section">
                     <legend>Данные клиента</legend>
 
                     <div>
@@ -139,7 +231,7 @@
                     </div>
 
                     <div>
-                        <label>Время доставки:</label>
+                        <label for="delivery-time">Время доставки:</label>
                         <br>
                         <input type="radio" id="delivery-when" name="delivery-when" value="now" required>
                         <label for="now">Как можно скорее</label>
@@ -155,7 +247,7 @@
                         <small>Доступное время доставки с 7:00 до 23:00</small>
                     </div>
 
-                    <div>
+                    <div class="form-buttons">
                         <button type="reset">Сбросить</button>
                         <button type="submit">Отправить</button>
                     </div>
