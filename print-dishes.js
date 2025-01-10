@@ -8,12 +8,26 @@ let order = {
   dessert: null,
 };
 
+let totalPrice = 0;
+
+// Функция для добавления блюд в заказ
 function addToOrder(meal) {
   order[meal.category] = meal;
+
+  // Сохранение идентификаторов в localStorage
+  const selectedIds = Object.values(order)
+    .filter(m => m) // Убедимся, что блюдо выбрано
+    .map(m => m.id); // Получаем идентификаторы блюд
+
+  localStorage.setItem('selectedMeals', JSON.stringify(selectedIds));
+
   updateOrderDisplay();
 }
 
+// Функция для отображения и подсчета стоимости выбранных блюд
 function updateOrderDisplay() {
+  const selectedIds = JSON.parse(localStorage.getItem('selectedMeals')) || [];
+
   const orderSummary = document.getElementById("order-summary");
   orderSummary.innerHTML = "";
 
@@ -61,6 +75,34 @@ function updateOrderDisplay() {
     totalCostElement.textContent = `${totalCost}₽`;
     orderSummary.appendChild(totalCostElement);
   }
+
+  const orderPanel = document.getElementById("order-panel");
+  const orderTotal = document.getElementById("order-total");
+  const checkoutLink = document.getElementById("checkout-link");
+
+  // Подсчёт суммы стоимости
+  totalPrice = Object.values(order).reduce((total, meal) => {
+      return total + (meal.price * meal.count);
+  }, 0);
+
+  orderTotal.textContent = `Итого: ${totalPrice}₽`;
+
+  // Проверка на соответствие комбо
+  const selectedCategories = Object.keys(order);
+  const combos = [
+      ["soup", "main_course", "salad", "drink"],
+      ["soup", "main_course", "drink"],
+      ["soup", "salad", "drink"],
+      ["main_course", "salad", "drink"],
+      ["main_course", "drink"]
+  ];
+
+  const isComboValid = combos.some(combo =>
+      combo.every(category => selectedCategories.includes(category))
+  );
+
+  checkoutLink.style.display = isComboValid ? "block" : "none";
+  orderPanel.style.display = totalPrice > 0 ? "flex" : "none";
 }
 
 function getCategoryTitle(category) {
@@ -80,6 +122,7 @@ function getCategoryTitle(category) {
   }
 }
 
+// Загрузка блюд на страницу меню
 document.addEventListener("DOMContentLoaded", async function () {
   await loadDishes();
 
@@ -143,18 +186,75 @@ document.addEventListener("DOMContentLoaded", async function () {
       }
     });
   });
-
-  document.querySelector("form").addEventListener("reset", function () {
-    order = {
-      soup: null,
-      main_course: null,
-      drink: null,
-      salad: null,
-      dessert: null,
-    };
-
-    updateOrderDisplay();
-  });
+  
 });
 
-//export { order };
+// Функция для отображения состава выбранных блюд
+document.addEventListener("DOMContentLoaded", async function () {
+    await loadDishes();
+
+    // Загрузка идентификаторов из localStorage
+    const selectedIds = JSON.parse(localStorage.getItem('selectedMeals')) || [];
+
+    selectedIds.forEach(id => {
+        const meal = meals.find(m => m.id === id);
+        if (meal) {
+            order[meal.category] = meal; // Добавляем блюдо в заказ
+        }
+    });
+
+    updateOrderDisplay(); // Обновляем отображение
+});
+
+async function loadOrder() {
+  await loadDishes();
+
+  const orderList = document.getElementById("meals-grid");
+  orderList.innerHTML = ""; // Очищаем предыдущий вывод
+
+  const selectedMeals = JSON.parse(localStorage.getItem("selectedMeals")) || [];
+
+  if (selectedMeals.length === 0) {
+      orderList.innerHTML = `
+          <p>Ничего не выбрано. Чтобы добавить блюда в заказ, перейдите на <a href="menu.html">Собрать ланч</a>.</p>
+      `;
+      updateOrderDisplay();
+      return;
+  }
+
+  selectedMeals.forEach(mealId => {
+      const meal = meals.find(m => m.id === mealId);
+      if (meal) {
+      order[meal.category] = meal;
+      const mealElement = document.createElement("div");
+      mealElement.classList.add("meal-item");
+      mealElement.innerHTML = `
+          <img src="${meal.image}" alt="${meal.name}">
+          <p class="meal-name">${meal.name}</p>
+          <p class="meal-price">${meal.price}₽</p>
+          <p class="meal-count">${meal.count} </p>
+          <button class="remove-button">Удалить</button>
+      `;
+
+         // Добавляем обработчик клика для кнопки "Удалить"
+         mealElement.querySelector(".remove-button").addEventListener("click", () => {
+          removeFromOrder(mealId);
+      });
+
+      orderList.appendChild(mealElement);
+      }
+  });
+  updateOrderDisplay();
+}
+
+function removeFromOrder(mealId) {
+  let selectedMeals = JSON.parse(localStorage.getItem("selectedMeals")) || [];
+  selectedMeals = selectedMeals.filter(id => id !== mealId);
+  localStorage.setItem("selectedMeals", JSON.stringify(selectedMeals));
+  loadOrder(); // Обновляем отображение
+}
+
+
+document.addEventListener("DOMContentLoaded", loadOrder);
+
+export { order };
