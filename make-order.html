@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Food Construct</title>
+    <link rel="stylesheet" href="styles2.css" />
+    <script type="module" src="print-dishes.js"></script>
+    <script type="module" src="dishes.js"></script>
+    <script type="module" src="notifications.js"></script>
+    
+    <script type="module" src="localStorage.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <h1>Food Construct</h1>
+      <nav>
+        <div class="navigation">
+          <a href="index.html">О нас</a>
+          <a href="menu.html">Собрать ланч</a>
+          <a href="make-order.html" class="active"> Оформить заказ </a>
+          <a href="#">Заказы</a>
+          <a href="#contacts">Контакты</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+        <h2>Состав заказа</h2><br>
+        <div id="meals-grid" class="meals-grid">
+            
+        </div>
+
+
+        <section class="forma">
+            <h2>Сделать заказ</h2>
+            <br />
+            <form action="https://httpbin.org/post" method="post">
+              <!-- Блок с заказом клиента -->
+              <div class="form-container">
+                <fieldset class="order">
+                  <legend>Ваш заказ</legend>
+    
+                  <div id="order-summary">
+                    <p>Ничего не выбрано</p>
+                    <br />
+                  </div>
+    
+                  <div class="total-cost"></div>
+    
+                  <label for="comment">Комментарий:</label>
+                  <textarea
+                    id="comment"
+                    name="comment"
+                    rows="7"
+                    cols="50"
+                  ></textarea>
+                </fieldset>
+    
+                <!-- Блок с данными клиента -->
+                <fieldset class="customer-section">
+                  <legend>Данные клиента</legend>
+    
+                  <div>
+                    <label for="name">Имя:</label>
+                    <input type="text" id="name" name="name" required />
+                  </div>
+    
+                  <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required />
+                  </div>
+    
+                  <div>
+                    <label for="subscribe"
+                      >Получать информацию о скидках и акциях:</label
+                    >
+                    <input
+                      type="checkbox"
+                      id="subscribe"
+                      name="subscribe"
+                      checked
+                    />
+                  </div>
+                  <br />
+                  <div>
+                    <label for="phone">Телефон:</label>
+                    <input type="tel" id="phone" name="phone" required />
+                  </div>
+    
+                  <div>
+                    <label for="address">Адрес доставки:</label>
+                    <input type="text" id="address" name="address" required />
+                  </div>
+    
+                  <div>
+                    <label for="delivery-time">Время доставки:</label>
+                    <br />
+                    <input
+                      type="radio"
+                      id="delivery-when"
+                      name="delivery-when"
+                      value="now"
+                      required
+                    />
+                    <label for="now">Как можно скорее</label>
+                    <br />
+                    <input
+                      type="radio"
+                      id="delivery-when"
+                      name="delivery-when"
+                      value="to-time"
+                    />
+                    <label for="to-time">К указанному времени</label>
+                  </div>
+    
+                  <div>
+                    <br />
+                    <label for="delivery-time">Укажите время доставки:</label>
+                    <input
+                      type="time"
+                      id="delivery-time"
+                      name="delivery-time-field"
+                      min="07:00"
+                      max="23:00"
+                      step="300"
+                      required
+                    /><br />
+                    <small>Доступное время доставки с 7:00 до 23:00</small>
+                  </div>
+    
+                  <div class="form-buttons">
+                    <button type="reset">Сбросить</button>
+                    <button type="submit">Отправить</button>
+                  </div>
+                </fieldset>
+              </div>
+            </form>
+          </section>
+
+    </main>
+
+    <footer id="contacts">
+      <p>Позвонить нам +7-000-000-00-00</p>
+    </footer>
+  </body>
+</html>

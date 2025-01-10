@@ -1,4 +1,4 @@
-import { meals, loadDishes } from "./meals.js";
+import { meals, loadDishes } from "./dishes.js";
 
 let order = {
   soup: null,
